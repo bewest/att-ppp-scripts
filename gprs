@@ -1,0 +1,92 @@
+# Name: gprs
+# Purpose: GPRS PPPD Connection Script
+# Notes: This is a detailed connection script for using GPRS devices as a tethered modem when connected via Bluetooth, Serial or USB.
+# See PPPD man pages for more info.
+#
+# Most GPRS devices will not reply to LCP echo's
+lcp-echo-failure 0
+lcp-echo-interval 0
+#
+# Specify 'nodetach' to allow PPPD to run interactively rather than as a background daemon.
+nodetach
+#
+# Used to create a debug log.
+# Comment this out once the PPP configuration is connecting successfully.
+debug
+#
+# Show password in debug messages.
+show-password
+#
+# Connect Script: CHAT is used to issue modem connect commands.
+connect "/usr/sbin/chat -v -t3 -f /etc/ppp/peers/gprs-connect-chat"
+#
+# Disconnect Script: CHAT is used to issue modem disconnect commands.
+disconnect /etc/ppp/peers/gprs-disconnect-chat
+#
+# Specify which device to use.  By default this dynamically maps to devices created in /dev/modem but can be adjusted as necessary.
+/dev/modem
+# /dev/ttyS0 # Serial Port 1 (COM1 in Windows)
+# /dev/ttyS1 # Serial Port 2 (COM2 in Windows)
+# /dev/ircomm0 # IrDA Serial Port
+# /dev/ttyUSB0 # USB Serial device
+# /dev/rfcomm0 # Bluetooth Serial Port 1
+# /dev/rfcomm1 # Bluetooth Serial Port 2
+#
+# Set the LOCAL serial port line speed.  This does NOT affect GPRS connection speed.
+#57600 # Some IrDA devices don't run full-duplex and this speed must be used.
+115200 # GPRS and EDGE Devices.
+#230400 # UMTS devices.
+#460800 # HSDPA UMTS devices.
+#
+# Hardware flow control should be used with most devices.
+crtscts # Use for Serial, BlueTooth and USB devices.
+#nocrtscts # Use for IrDA devices.
+#
+# Add the PPP interface as the default route to the IP routing table.
+defaultroute
+#
+# PPP compression options.
+# These are specific to the serial connection, not the GPRS connection.
+novj
+nobsdcomp
+novjccomp
+nopcomp
+noaccomp
+#
+# Defines whether an attempt should be made to re-establish a dropped GPRS connection.
+persist
+#
+# Defines the maximum number of reconnect attempts to try.
+maxfail 99
+#
+# Ignore carrier detect signal from the modem.
+# local
+#
+# This advises the PPP accept peers idea of our local address and sets address peer as 10.0.0.1.
+# Any address will do since IPCP assigns 0.0.0.0 to it.
+# PPPD may reject this if you are using the 10.x.x.x range on another interface.
+# :10.0.0.1
+#
+# Advises PPPD to request any DHCP address, none in particular.
+# noipdefault
+#
+# Allows the PPPD daemon to accept DHCP assigned IPs.
+# ipcp-accept-local
+#
+# Advises PPPD to use the DNS provided by DHCP.  Commonly causes "Received bad configure-nak/rej" errors when used.
+# usepeerdns
+#
+# Used to disable authentication when establishing PDP context.
+# If a custom PDP requires authentication, comment this out and provide the correct username below and update the username-password combination to the secrets file: /etc/ppp/pap-secrets (for PAP) or /etc/ppp/chap-secrets (for CHAP).
+# See the PPPD man pages for further information.
+# user "username"
+#
+# Asyncmap - Some devices may require this.
+# asyncmap 0xa0000
+#
+# With the 'nomagic' option, PPPD cannot detect a looped-back line.
+# Uncomment this only if the PPPD connection is buggy.
+# nomagic
+#
+# Require the peer authenticate itself using PAP - Some devices may require this.
+# require-pap

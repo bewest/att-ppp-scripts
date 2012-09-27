@@ -1,0 +1,16 @@
+# Name: gprs-disconnect-chat
+# Purpose: GPRS PPP Disconnect Script
+# Notes: CHAT is used to issue modem AT commands.  See CHAT man pages for more info.
+#
+exec /usr/sbin/chat -V -s -S \
+ABORT "BUSY" \
+ABORT "ERROR" \
+ABORT "NO DIALTONE" \
+SAY "n\Sending break to the modem\n" \
+"" "\K" \
+"" "\K" \
+"" "\K" \
+"" "+++ATH" \
+"" "+++ATH" \
+"" "+++ATH" \
+SAY "\nPDP context detached\n"

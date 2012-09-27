@@ -24,7 +24,8 @@ connect "/usr/sbin/chat -v -t3 -f /etc/ppp/peers/gprs-connect-chat"
 disconnect /etc/ppp/peers/gprs-disconnect-chat
 #
 # Specify which device to use.  By default this dynamically maps to devices created in /dev/modem but can be adjusted as necessary.
-/dev/modem
+#/dev/modem
+/dev/ttyUSB0
 # /dev/ttyS0 # Serial Port 1 (COM1 in Windows)
 # /dev/ttyS1 # Serial Port 2 (COM2 in Windows)
 # /dev/ircomm0 # IrDA Serial Port

@@ -18,7 +18,7 @@ debug
 show-password
 #
 # Connect Script: CHAT is used to issue modem connect commands.
-connect "/usr/sbin/chat -v -t3 -f /etc/ppp/peers/gprs-connect-chat"
+connect "/usr/sbin/chat -v -V -S -s -t3 -f /etc/ppp/peers/gprs-connect-chat"
 #
 # Disconnect Script: CHAT is used to issue modem disconnect commands.
 disconnect /etc/ppp/peers/gprs-disconnect-chat

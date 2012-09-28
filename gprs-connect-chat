@@ -3,7 +3,7 @@
 # Notes: CHAT is used to issue modem AT commands.  See CHAT man pages for more info.
 #
 # Activate the device and pause before sending additional AT commands.
-'' AT+CFUN=1
+#'' AT+CFUN=1
 '' AT
 #
 # Verify GPRS Attach prior to attempting PDP Context negotiation.
@@ -13,7 +13,7 @@
 # Multiple definitions can be configured by assigning each a unique CID.
 # Use "isp.cingular"  or "Broadband" to connect to the Cingular/AT&T orange network.
 # Use "proxy" to connect to the AT&T blue network.
-OK AT+CGDCONT=1,"IP","isp.cingular" or "Broadband"
+#OK AT+CGDCONT=1,"IP","isp.cingular" or "Broadband"
 #
 # Set the dialing string and specify which PDP Context definition to use.
 OK ATD*99***1#

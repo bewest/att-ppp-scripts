@@ -7,7 +7,7 @@
 '' AT
 #
 # Verify GPRS Attach prior to attempting PDP Context negotiation.
-'' AT+CGREG=1
+#'' AT+CGREG=1
 #
 # Define the PDP Context: Context ID, Routing Protocol, APN
 # Multiple definitions can be configured by assigning each a unique CID.

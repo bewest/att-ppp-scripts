@@ -1,8 +1,12 @@
-# Configure pppd in Linux for AT&T wireless via usb
+# Configure pppd in Linux for Ting/AT&T wireless via usb
 
-AT&T's suggestion for using pppd to connect to their wireless network.
+Modify AT&T's suggestion for using pppd to connect to their wireless network.
 
 http://www.att.com/esupport/article.jsp?sid=36059&cv=820#fbid=Ph3zROJiN9D
+
+Tested on beaglebone with sierra 250 from Ting.  Basically, one just dials `ATD*99***1#` and everything works.  On older networks, use the 777 number instead.
+
+I didn't know exactly what chat did or how it was used until this project, which is well after I wrote https://github.com/bewest/unapy.  `chat` seems to be an elegant solution, but it makes conditional auditing and reporting somewhat painful if you don't love shell scripts.  unapy or a similar framework in ruby or coffeescript (for node) might be handy in the future?
 
 ## Using
 
@@ -18,38 +22,5 @@ To fix this, back up `/etc/resolv.conf` and issue the following command:
 To disconnect, press "Control-C" in the terminal window.
 
 ## Notes
-Note: Root access is required to create connection scripts and run the PPPD dialer. 
-Note: Ensure that when copying and pasting information from the above scripts the formatting matches exactly what is shown.  Linux uses a different method for carriage returns between lines in text documents, and if the information is entered inappropriately errors are likely to occur.
-Note: Most desktop environments, such as KDE and GNOME, include a utility for creating PPPD scripts, however these vary depending on the Linux distribution and version of desktop environment in use. 
-Note: Some Linux distributions store commands in a different location, so these scripts may need to be modified depending on the distro in use.
-This configuration has been confirmed to work with the following:
 
-IOGear GBU211 USB Bluetooth Adapter (uses Broadcom chipset) although any hardware supported by BlueZ should work.
-Kernels tested: 2.4.20 and 2.6.9-1-667
-Distributions tested: Debian, Fedora Core, Slackware, Gentoo, and Mandrake
-Devices tested:
-Nokia 3620/3650/6651/6820
-Novatel G100/U520
-Sierra Wireless AirCard 710/750/775
-Sony Ericsson GC82/GC83
-Sony Ericsson T68/T68i/T610/T616
-Motorola A845/V600
-
-
-
-Note: Root access is required to create connection scripts and run the PPPD dialer. 
-Note: Ensure that when copying and pasting information from the above scripts the formatting matches exactly what is shown.  Linux uses a different method for carriage returns between lines in text documents, and if the information is entered inappropriately errors are likely to occur.
-Note: Most desktop environments, such as KDE and GNOME, include a utility for creating PPPD scripts, however these vary depending on the Linux distribution and version of desktop environment in use. 
-Note: Some Linux distributions store commands in a different location, so these scripts may need to be modified depending on the distro in use.
-This configuration has been confirmed to work with the following:
-
-IOGear GBU211 USB Bluetooth Adapter (uses Broadcom chipset) although any hardware supported by BlueZ should work.
-Kernels tested: 2.4.20 and 2.6.9-1-667
-Distributions tested: Debian, Fedora Core, Slackware, Gentoo, and Mandrake
-Devices tested:
-Nokia 3620/3650/6651/6820
-Novatel G100/U520
-Sierra Wireless AirCard 710/750/775
-Sony Ericsson GC82/GC83
-Sony Ericsson T68/T68i/T610/T616
-Motorola A845/V600
+    
